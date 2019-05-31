@@ -5,7 +5,7 @@ dist: trusty
 sudo: required
 branches:
   only:
-    - master
+    - develop
 install:
   - npm ci
 cache:
