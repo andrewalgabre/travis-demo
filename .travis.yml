@@ -6,12 +6,24 @@ sudo: required
 branches:
   only:
     - master
+install:
+  - npm ci
+cache:
+  directories:
+    - ~/.npm
+    - ./node_modules
+    - ~/.cache
+  override:
+    - npm ci
+    - npm run cy:verify
 before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
   - npm run test-headless
   - ng build --prod
+  - npm run cy:verify
+  - npm run ci:cy-run
 deploy:
   skip_cleanup: true
   provider: firebase
