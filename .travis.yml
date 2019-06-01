@@ -6,6 +6,7 @@ sudo: required
 branches:
   only:
     - develop
+    - master
 install:
   - npm ci
 cache:
