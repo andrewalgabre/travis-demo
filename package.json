@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "cy:run": "cypress run",
     "cy:verify": "cypress verify",
     "ci:start-server": "angular-http-server --path ./dist/travis-demo -p 4200",
