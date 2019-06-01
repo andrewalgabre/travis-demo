@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "travis-demo-9ddcf"
+  },
+  "targets": {
+    "travis-demo-9ddcf": {
+      "hosting": {
+        "development": [
+          "travis-demo-2"
+        ],
+        "production": [
+          "travis-demo-9ddcf"
+        ]
+      }
+    }
   }
 }
