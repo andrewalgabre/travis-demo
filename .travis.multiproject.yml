@@ -23,23 +23,21 @@ script:
   - ng lint
   - npm run test:headless
   - ng build --prod
-  # - npm run cy:verify
-  # - npm run ci:cy-run
+  - npm run cy:verify
+  - npm run ci:cy-run
 deploy:
-  - provider: script
+  - provider: firebase
     skip_cleanup: true
-    script: firebase deploy --only hosting:production --token "1/fKP51M2HizQj8OHzrPxfokAb7GhIbu-p5CwQV3sNEW6-25uxqT35hwoO2arSt3on"
-    # token:
-    #   secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
-    # project: 'travis-demo-9ddcf'
+    token:
+      secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
+    project: 'travis-demo-9ddcf'
     on:
       branch: master
 
-  - provider: script
+  - provider: firebase
     skip_cleanup: true
-    script: firebase deploy --only hosting:development --token "1/fKP51M2HizQj8OHzrPxfokAb7GhIbu-p5CwQV3sNEW6-25uxqT35hwoO2arSt3on"
-    # token:
-    #   secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
-    # project: 'travis-demo-2'
+    token:
+      secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
+    project: 'travis-demo-2'
     on:
       branch: develop
