@@ -1,37 +1,3 @@
-if: branch = master
-language: node_js
-node_js:
-  - '10'
-dist: trusty
-sudo: required
-branches:
-  only:
-    - master
-before_install:
-  - echo -e "MASTER BUILD"
-install:
-  - npm ci
-cache:
-  directories:
-    - ~/.npm
-    - ./node_modules
-    - ~/.cache
-  override:
-    - npm ci
-    - npm run cy:verify
-script:
-  - ng lint
-  - npm run test-headless
-  - ng build --prod
-  - npm run cy:verify
-  - npm run ci:cy-run
-deploy:
-  skip_cleanup: false
-  provider: firebase
-  token:
-    secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
-  project: 'travis-demo-9ddcf'
-if: branch = develop
 language: node_js
 node_js:
   - '10'
@@ -40,8 +6,6 @@ sudo: required
 branches:
   only:
     - develop
-before_install:
-  - echo -e "MASTER BUILD"
 install:
   - npm ci
 cache:
@@ -59,8 +23,11 @@ script:
   - npm run cy:verify
   - npm run ci:cy-run
 deploy:
-  skip_cleanup: false
+  skip_cleanup: true
   provider: firebase
   token:
     secure: aZlAYaOzi4d/KuvF/wwvoEBpDF4nEZvbIZVKL1wRHdNRm/1CJXkCwfW7ys3y4DrcFw6CzjJIB7Hzr4w62jAc86qCl0QmR8vbVPEU6qzZapj0H/wFHckM3dwL9nAQKNyDQGtjf0ZjXIHzjCuCAWBfKke4VL3MxrqhsG4awTpXduix5vUd/bU4gDiAsPcJqGDoiiMKbg1FppkpOAArwidxLCxi7ZRLV4thjVfnsg2CIi6lI+V1juMIhujc2LLTvD+UFtIdX4qCR590fGMoiwpweMIs1AcYR/syS2EiUghO9GL37aGFMO0mgDwgJckQ4ZVP4KQogwg9P18CFXG9RFYzXV+wW+QMfFDTUIJH3gPjnHF5YQAiqL3/s9XB15HqeiIBwBMVWTts8RuWkWyYr92UllRb7EI7hS4CT49OaMG5VNm9berlf++ApN8gvmVguDyOEvYrDoTIrEAiBngrPj+QDN/8n6SGXZCulrfEuanRD5Z2BAudIUaoEcelc9bVgIf/KITX08e/E0L5+riB1A8STBczpntPqINT1iS+zpCQlZhUVmjp1FRcIzcj06Of8mfB99BM1HZXxWenznnbFgXZtn58r3Uw24PB1Xx52R5LjVnfgBJwmD3KEWuXJ/IymNaZclYniT1kg6mgATyT3i95paV8pk4HWwx2dQ+5z7SNJeE=
+  project: 'travis-demo-9ddcf'
+  if: branch = master
   project: 'travis-demo-2'
+  if: branch = develop
