@@ -28,12 +28,12 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: firebase deploy --only hosting:production --token "1/fKP51M2HizQj8OHzrPxfokAb7GhIbu-p5CwQV3sNEW6-25uxqT35hwoO2arSt3on"
+    script: firebase deploy --only hosting:production --token "<your-firebase-ci-token>"
     on:
       branch: master
 
   - provider: script
     skip_cleanup: true
-    script: firebase deploy --only hosting:development --token "1/fKP51M2HizQj8OHzrPxfokAb7GhIbu-p5CwQV3sNEW6-25uxqT35hwoO2arSt3on"
+    script: firebase deploy --only hosting:development --token "<your-firebase-ci-token>"
     on:
       branch: develop
